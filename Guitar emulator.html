@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Play!</title>
+  <style>
+  </style>
+</head>
+<body onkeydown="pressKey(event)">
+  <div id='loop'><span style='margin-right:50px;'>Shift</span><span>Loop</span></div>
+  <div class='soundEffects' id='q'>Q</div>
+  <div class='soundEffects' id='w'>W</div>
+  <div class='soundEffects' id='e'>E</div>
+  <div class='soundEffects' id='r'>R</div>
+  <div class='soundEffects' id='a'>A</div>
+  <div class='soundEffects' id='s'>S</div>
+  <div class='soundEffects' id='d'>D</div>
+  <div class='soundEffects' id='f'>F</div>
+  <div class='soundEffects' id='u'><span class='key'>U</span><span class='effect'></span></div>
+  <div class='soundEffects' id='i'><span class='key'>I</span><span class='effect'></span></div>
+  <div class='soundEffects' id='o'><span class='key'>O</span><span class='effect'></span></div>
+  <div class='soundEffects' id='p'><span class='key'>P</span><span class='effect'></span></div>
+  <div class='soundEffects' id='j'><span class='key'>J</span><span class='effect'></span></div>
+  <div class='soundEffects' id='k'><span class='key'>K</span><span class='effect'></span></div>
+  <div class='soundEffects' id='l'><span class='key'>L</span><span class='effect'></span></div>
+  <div class='soundEffects' id=';'><span class='key'>;</span><span class='effect'></span></div>
+</body>
+<script>
+let body = document.querySelector('body');
+let soundEffects = document.querySelectorAll('.soundEffects')
+let loop = false;
+let loopIndicator = document.querySelector('#loop');
+loopIndicator.style = 'background-color:#69c;'
+
+let rhythmIrregular = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_rhythmIrregular_uargtw.wav';
+let rhythmBeatSlow = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_rhythmBeatSlow_zclwpv.wav';
+let rhythmBeatMedium = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627909/Sounds/Sounds_rhythmBeatMedium_xhbdgg.wav';
+let rhythmBeatFast = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627907/Sounds/Sounds_rhythmBeatFast_hoxiuj.wav';
+let beatSlide = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627902/Sounds/Sounds_beatSlide_jeux18.wav';
+let beatSlideDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatSlideDeep_tpwmyk.wav';
+let beat = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beat_uya5cj.wav';
+let beatDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatDeep_xpzsxl.wav';
+
+
+
+q.value = rhythmIrregular;
+w.value = rhythmBeatSlow;
+e.value = rhythmBeatMedium;
+r.value = rhythmBeatFast;
+a.value = beatSlide;
+s.value = beatSlideDeep;
+d.value = beat;
+f.value = beatDeep; 
+
+function pressKey(event) {
+  let pressedKey = event.key;
+  if (pressedKey === 'Shift' && loop === false) {
+    loop = true;
+    loopIndicator.style.backgroundColor = '#fec';
+  } else if (pressedKey === 'Shift' && loop === true) {
+    loop = false;
+    loopIndicator.style = ('background-color: #69c')
+  }
+  soundEffects.forEach((div) => {
+    if (pressedKey === div.id){
+      let audioObj = new Audio(div.value);
+      loop ? audioObj.loop = true : audioObj.loop = false;
+      audioObj.volume = 0.2;
+      audioObj.play();
+    };
+  });
+}
+  </script>
+</html>
+ </script>
+</body>
+</html>
