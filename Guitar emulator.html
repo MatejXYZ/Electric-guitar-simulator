@@ -2,8 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Play!</title>
+  <title>Strange sounds simulator!</title>
   <style>
+    .soundEffects {
+      transition: all 0.1s;
+    }
+    .red {
+      color: red;
+    }
   </style>
 </head>
 <body onkeydown="pressKey(event)">
@@ -23,7 +29,7 @@
   <div class='soundEffects' id='j'><span class='key'>J</span><span class='effect'></span></div>
   <div class='soundEffects' id='k'><span class='key'>K</span><span class='effect'></span></div>
   <div class='soundEffects' id='l'><span class='key'>L</span><span class='effect'></span></div>
-  <div class='soundEffects' id=';'><span class='key'>;</span><span class='effect'></span></div>
+  <div class='soundEffects semiColon' id=';'><span class='key'>;</span><span class='effect'></span></div>
 </body>
 <script>
 let body = document.querySelector('body');
@@ -31,6 +37,7 @@ let soundEffects = document.querySelectorAll('.soundEffects')
 let loop = false;
 let loopIndicator = document.querySelector('#loop');
 loopIndicator.style = 'background-color:#69c;'
+
 
 let rhythmIrregular = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_rhythmIrregular_uargtw.wav';
 let rhythmBeatSlow = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_rhythmBeatSlow_zclwpv.wav';
@@ -40,7 +47,14 @@ let beatSlide = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627902/S
 let beatSlideDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatSlideDeep_tpwmyk.wav';
 let beat = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beat_uya5cj.wav';
 let beatDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatDeep_xpzsxl.wav';
-
+let highest ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627905/Sounds/Sounds_highest_nkh8je.wav';
+let higher ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627902/Sounds/Sounds_higher_n7uwy1.wav';
+let high ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627903/Sounds/Sounds_high_ff7h7f.wav';
+let highStringyDeep ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_highStringyDeep_cnughv.wav';
+let highStringyWavy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_highStringyWavy_y1wply.wav';
+let highStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627906/Sounds/Sounds_highStringy_zk1wla.wav';
+let higherStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627904/Sounds/Sounds_higherStringy_ffnm5o.wav';
+let highestStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627904/Sounds/Sounds_highestStringy_sdcedt.wav';
 
 
 q.value = rhythmIrregular;
@@ -50,19 +64,29 @@ r.value = rhythmBeatFast;
 a.value = beatSlide;
 s.value = beatSlideDeep;
 d.value = beat;
-f.value = beatDeep; 
+f.value = beatDeep;
+j.value = highest;
+k.value = higher;
+l.value = high;
+p.value = highStringyWavy;
+u.value = highStringy;
+i.value = higherStringy;
+o.value = highestStringy;
+
+document.querySelector('.semiColon').value = highStringyDeep;
 
 function pressKey(event) {
-  let pressedKey = event.key;
-  if (pressedKey === 'Shift' && loop === false) {
+  if (event.key === 'Shift' && loop === false) {
     loop = true;
     loopIndicator.style.backgroundColor = '#fec';
-  } else if (pressedKey === 'Shift' && loop === true) {
+  } else if (event.key === 'Shift' && loop === true) {
     loop = false;
     loopIndicator.style = ('background-color: #69c')
   }
   soundEffects.forEach((div) => {
-    if (pressedKey === div.id){
+    div.classList.remove('red');
+    if (event.key === div.id){
+      div.classList.add('red');
       let audioObj = new Audio(div.value);
       loop ? audioObj.loop = true : audioObj.loop = false;
       audioObj.volume = 0.2;
