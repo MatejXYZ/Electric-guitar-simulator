@@ -4,32 +4,51 @@
   <meta charset="utf-8">
   <title>Strange sounds simulator!</title>
   <style>
-    .soundEffects {
-      transition: all 0.1s;
+    body {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      background-image: url(https://images.unsplash.com/photo-1581084158167-c9578e5e858e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80);
     }
+    .soundEffects {
+      margin:0 20px;
+      background-color: #fff5f5;
+      height: 50px;
+    }
+
     .red {
-      color: red;
+      background-color: #faa;
+      }
+
+    #loop {
+      margin-top: 30px;
+      margin-left: 20px;
+      height: 250px;
+    }
+
+    #loop, .soundEffects {
+      transition: all 100ms;
     }
   </style>
 </head>
 <body onkeydown="pressKey(event)">
-  <div id='loop'><span style='margin-right:50px;'>Shift</span><span>Loop</span></div>
-  <div class='soundEffects' id='q'>Q</div>
-  <div class='soundEffects' id='w'>W</div>
-  <div class='soundEffects' id='e'>E</div>
-  <div class='soundEffects' id='r'>R</div>
-  <div class='soundEffects' id='a'>A</div>
-  <div class='soundEffects' id='s'>S</div>
-  <div class='soundEffects' id='d'>D</div>
-  <div class='soundEffects' id='f'>F</div>
-  <div class='soundEffects' id='u'><span class='key'>U</span><span class='effect'></span></div>
-  <div class='soundEffects' id='i'><span class='key'>I</span><span class='effect'></span></div>
-  <div class='soundEffects' id='o'><span class='key'>O</span><span class='effect'></span></div>
-  <div class='soundEffects' id='p'><span class='key'>P</span><span class='effect'></span></div>
-  <div class='soundEffects' id='j'><span class='key'>J</span><span class='effect'></span></div>
-  <div class='soundEffects' id='k'><span class='key'>K</span><span class='effect'></span></div>
-  <div class='soundEffects' id='l'><span class='key'>L</span><span class='effect'></span></div>
-  <div class='soundEffects semiColon' id=';'><span class='key'>;</span><span class='effect'></span></div>
+  <div id='loop'><span>Shift</span><span>Loop</span></div>
+  <div class='soundEffects' id='q'><span class='key'>Q</span><span class='effect'>Beat Irregular</span></div>
+  <div class='soundEffects' id='w'><span class='key'>W</span><span class='effect'>Beat Slow</span></div>
+  <div class='soundEffects' id='e'><span class='key'>E</span><span class='effect'>Beat Medium</span></div>
+  <div class='soundEffects' id='r'><span class='key'>R</span><span class='effect'>Beat Fast</span></div>
+  <div class='soundEffects' id='a'><span class='key'>A</span><span class='effect'>Slide</span></div>
+  <div class='soundEffects' id='s'><span class='key'>S</span><span class='effect'>Slide Low</span></div>
+  <div class='soundEffects' id='d'><span class='key'>D</span><span class='effect'>Single Beat</span></div>
+  <div class='soundEffects' id='f'><span class='key'>F</span><span class='effect'>Single Beat High</span></div>
+  <div class='soundEffects' id='u'><span class='key'>U</span><span class='effect'>High Frayed</span></div>
+  <div class='soundEffects' id='i'><span class='key'>I</span><span class='effect'>Higer Frayed</span></div>
+  <div class='soundEffects' id='o'><span class='key'>O</span><span class='effect'>Highest Frayed</span></div>
+  <div class='soundEffects' id='p'><span class='key'>P</span><span class='effect'>Wavy Frayed</span></div>
+  <div class='soundEffects' id='j'><span class='key'>J</span><span class='effect'>Highest</span></div>
+  <div class='soundEffects' id='k'><span class='key'>K</span><span class='effect'>Higher</span></div>
+  <div class='soundEffects' id='l'><span class='key'>L</span><span class='effect'>High</span></div>
+  <div class='soundEffects semiColon' id=';'><span class='key'>;</span><span class='effect'>Wavy deep</span></div>
 </body>
 <script>
 let body = document.querySelector('body');
@@ -47,14 +66,14 @@ let beatSlide = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627902/S
 let beatSlideDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatSlideDeep_tpwmyk.wav';
 let beat = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beat_uya5cj.wav';
 let beatDeep = 'https://res.cloudinary.com/darwdiudk/video/upload/v1584627900/Sounds/Sounds_beatDeep_xpzsxl.wav';
-let highest ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627905/Sounds/Sounds_highest_nkh8je.wav';
-let higher ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627902/Sounds/Sounds_higher_n7uwy1.wav';
-let high ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627903/Sounds/Sounds_high_ff7h7f.wav';
-let highStringyDeep ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_highStringyDeep_cnughv.wav';
-let highStringyWavy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627908/Sounds/Sounds_highStringyWavy_y1wply.wav';
-let highStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627906/Sounds/Sounds_highStringy_zk1wla.wav';
-let higherStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627904/Sounds/Sounds_higherStringy_ffnm5o.wav';
-let highestStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584627904/Sounds/Sounds_highestStringy_sdcedt.wav';
+let highest ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685675/Sounds/highest_lijhcm.wav';
+let higher ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685673/Sounds/higher_wd6cbo.wav';
+let high ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685465/Sounds/high_w1jzpf.wav';
+let highStringyDeep ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685671/Sounds/highStringyDeep_bjg9xo.wav';
+let highStringyWavy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685672/Sounds/highStringyWavy_sizimi.wav';
+let highStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685670/Sounds/highStringy_skkac5.wav';
+let higherStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584686021/Sounds/higherStringy_lxmfiq.wav';
+let highestStringy ='https://res.cloudinary.com/darwdiudk/video/upload/v1584685669/Sounds/highestStringy_kbt1nm.wav';
 
 
 q.value = rhythmIrregular;
